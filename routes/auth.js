@@ -5,11 +5,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const verify = require('./verifyToken')
 
-router.get('/', verify, (req, res) => {
-    res.send(req.user)
-    User.findOne({_id: req.user._id})
-})
-
 router.post('/register', async (req, res)=> {
 
     //User Validation
