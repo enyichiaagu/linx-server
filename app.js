@@ -17,6 +17,7 @@ mongoose.connect(
 
 //Middlewares
 app.use(express.json())
+app.use(cors())
 
 //Route Middlewares
 app.use('/api/user', authRoute)
