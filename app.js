@@ -9,11 +9,11 @@ const linkRoute = require('./routes/links')
 dotenv.config()
 
 //Connect DB
-mongoose.connect(
-    process.env.DB_CONNECT,
-    { useNewUrlParser: true },
-    () =>console.log('connected to DB')
-)
+// mongoose.connect(
+//     process.env.DB_CONNECT,
+//     { useNewUrlParser: true },
+//     () =>console.log('connected to DB')
+// )
 
 //Middlewares
 app.use(express.json())
