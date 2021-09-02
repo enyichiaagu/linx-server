@@ -28,4 +28,4 @@ app.get('/', (req, res) => {
 app.use('/api/user', authRoute)
 app.use('/api/links', linkRoute)
 
-app.listen(5000, () => console.log("Server up and running"))
+app.listen(process.env.PORT, () => console.log("Server up and running"))
