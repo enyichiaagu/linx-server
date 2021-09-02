@@ -19,6 +19,10 @@ mongoose.connect(
 app.use(express.json())
 app.use(cors())
 
+app.get('/', (req, res) => {
+    res.send("<h1>Hello World. This is Linx - The server</h1>")
+})
+
 //Route Middlewares
 app.use('/api/user', authRoute)
 app.use('/api/links', linkRoute)
