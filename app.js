@@ -7,6 +7,9 @@ const cors = require("cors")
 const authRoute = require('./routes/auth')
 const linkRoute = require('./routes/links')
 
+//Middlewares
+app.use(cors())
+app.use(express.json())
 dotenv.config()
 
 // Connect DB
@@ -15,10 +18,6 @@ mongoose.connect(
     { useNewUrlParser: true },
     () =>console.log('connected to DB')
 )
-
-//Middlewares
-app.use(cors())
-app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send('<h1>Is this even working?</h1>')
