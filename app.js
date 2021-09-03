@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-    res.send("<h1>Hello World. This is Linx - The server</h1>")
+    res.sendFile('<h1>Is this even working?</h1>')
 })
 
 //Route Middlewares
