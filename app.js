@@ -3,12 +3,12 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require("cors")
-//Import Routes
-const authRoute = require('./routes/auth')
-const linkRoute = require('./routes/links')
+const auth = require('./routes/auth')
+const link = require('./routes/links')
+const bodyParser = require('body-parser')
 
-//Middlewares
 app.use(cors())
+app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 dotenv.config()
 
@@ -20,11 +20,10 @@ mongoose.connect(
 )
 
 app.get('/', (req, res) => {
-    res.send('<h1>Is this even working?</h1>')
+    res.send({data: "Success!"})
 })
 
-//Route Middlewares
-app.use('/api/user', authRoute)
-app.use('/api/links', linkRoute)
+app.use('/api/auth/', auth)
+app.use('/api/link/', link)
 
 app.listen(process.env.PORT, () => console.log("Server up and running"))
