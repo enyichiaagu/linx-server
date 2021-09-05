@@ -40,7 +40,7 @@ router.delete('/:id', verify, async (req, res) => {
     const user = await User.findOne({ _id: req.user._id })
     user.links.id(id).remove()
     user.save()
-    res.send({"success": "Link was deleted successfully"})
+    res.send(user.links.reverse())
 })
 
 module.exports = router
