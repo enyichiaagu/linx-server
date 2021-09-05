@@ -4,7 +4,7 @@ const User = require('../model/User')
 
 router.get('/', verify, async (req, res) => {
     const user = await User.findOne({_id: req.user._id})
-    res.status(200).send(user.links)
+    res.status(200).send(user.links.reverse())
 })
 
 router.post('/', verify, async (req, res) => {
@@ -17,7 +17,7 @@ router.post('/', verify, async (req, res) => {
     const user = await User.findOne({_id: req.user._id})
     user.links.push(newLink)
     user.save()
-    res.send(user.links)
+    res.send(user.links.reverse())
 })
 
 router.put('/:id', verify, async (req, res) => {
@@ -29,7 +29,7 @@ router.put('/:id', verify, async (req, res) => {
         console.log(user.links )
         link.title = newTitle
         user.save()
-        res.send(user.links)
+        res.send(user.links.reverse())
     } catch(err) {
         res.send({error: "Internal Server error"})
     }
@@ -40,7 +40,7 @@ router.delete('/:id', verify, async (req, res) => {
     const user = await User.findOne({ _id: req.user._id })
     user.links.id(id).remove()
     user.save()
-    res.send(user)
+    res.send({"success": "Link was deleted successfully"})
 })
 
 module.exports = router

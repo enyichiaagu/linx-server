@@ -9,7 +9,7 @@ router.get('/', verify, async (req, res) => {
         const user = await User.findOne({_id: req.user._id})
         res.send({
             name: user.name,
-            links: user.links
+            links: user.links.reverse()
         })
     } catch (err) {
         res.send({error: "server error"})
