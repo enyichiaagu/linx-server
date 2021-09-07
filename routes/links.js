@@ -26,7 +26,6 @@ router.put('/:id', verify, async (req, res) => {
         const newTitle = req.body.title
         const user = await User.findOne({_id: req.user._id})
         const link = user.links.id(id)
-        console.log(user.links )
         link.title = newTitle
         user.save()
         res.send(user.links.reverse())
